@@ -1,0 +1,8 @@
+---
+- name: Deploy php_web
+  hosts: web-servers
+  become: yes
+  roles:
+    - php_web
+    - docker
+    - nginx
