@@ -1,0 +1,51 @@
+version: '3.8'
+
+# Our Network
+networks:
+  app:
+    driver: bridge
+
+services:
+  web_php:
+    build:
+      context: ./effective-mobile-test-task
+      dockerfile: Dockerfile
+    container_name: php_container
+    volumes:
+      - ./www:/var/www
+    networks:
+      - app
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_container
+    ports:
+      - '80:80'
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./www:/var/www
+    depends_on:
+      - web_php
+    networks:
+      - app
+    restart: always
+
+  database:
+    image: mysql:8.3.0
+    container_name: db_container
+    environment:
+      MYSQL_USER: user
+      MYSQL_DATABASE: test
+      MYSQL_PASSWORD: password
+    ports:
+      - '3306:3306'
+    volumes:
+      - db_data:/var/liv/mysql
+    networks:
+      - app
+    restart: always
+
+# Volumes for data persistence
+volumes:
+  db_data:
