@@ -9,7 +9,6 @@ services:
   web_php:
     build:
       context: .
-
       dockerfile: Dockerfile
     container_name: php_container
     volumes:
