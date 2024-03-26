@@ -16,6 +16,8 @@ services:
       - ./www:/var/www
     networks:
       - app
+    environment:
+      TZ: Europe/Moscow
     restart: always
 
   nginx:
