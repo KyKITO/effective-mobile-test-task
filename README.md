@@ -1,1 +1,3 @@
-# effective-mobile-test-task
+### Задача: Разработать ansible, запускающий докеризированное веб приложение (nginx, php, mysql) с использованием docker-compose.yml на удалённом сервере.
+
+Этот проект разворачивает и запускает контейнеры PHP8-FPM, Nginx, MySQL, используя Ansible + Docker.
