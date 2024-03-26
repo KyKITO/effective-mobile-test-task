@@ -9,6 +9,7 @@ services:
   web_php:
     build:
       context: .
+
       dockerfile: Dockerfile
     container_name: php_container
     volumes:
@@ -39,6 +40,7 @@ services:
       MYSQL_DATABASE: test
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: rootpass
+
     ports:
       - '3306:3306'
     volumes:
