@@ -26,6 +26,7 @@ services:
     volumes:
       - ./nginx:/etc/nginx/conf.d
       - ./www:/var/www
+      - ./logs:/var/log/nginx
     depends_on:
       - web_php
     networks:
@@ -39,7 +40,7 @@ services:
       MYSQL_USER: user
       MYSQL_DATABASE: test
       MYSQL_PASSWORD: password
-      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_ROOT_PASSWORD: secret
 
     ports:
       - '3306:3306'
